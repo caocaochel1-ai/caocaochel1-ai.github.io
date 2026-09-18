@@ -1,0 +1,4 @@
+@media (pointer:fine){
+  .hero-tile:not(.tile-center){cursor:url('/assets/cursor-watering-can-hover.png') 47 35,pointer !important}
+  .tile-center{cursor:pointer !important}
+}

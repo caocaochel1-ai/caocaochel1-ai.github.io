@@ -1,0 +1,58 @@
+.detail-gallery {
+  position: relative;
+  display: grid;
+  gap: clamp(12px, 1.2vw, 22px);
+  width: 100vw;
+  margin: clamp(32px, 5vw, 86px) calc(50% - 50vw) 58px;
+  padding: 0 0 clamp(68px, 14vh, 180px);
+}
+
+.detail-gallery figure,
+.detail-gallery-feature {
+  width: min(1320px, 82vw);
+  height: auto;
+  margin: 0 auto;
+  background: #eadfcb;
+  opacity: .2;
+  transform: translateY(56px) scale(.97);
+  transition: opacity .8s ease, transform 1s cubic-bezier(.2, .7, .2, 1);
+}
+
+.detail-gallery figure.is-in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.detail-gallery img,
+.detail-gallery-feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+.detail-gallery-status {
+  position: fixed;
+  right: clamp(20px, 4vw, 70px);
+  bottom: clamp(22px, 4vh, 48px);
+  z-index: 4;
+  color: var(--ink);
+  font: 500 12px/1 Manrope, "Microsoft YaHei", sans-serif;
+  letter-spacing: .12em;
+  opacity: .8;
+}
+
+.detail-gallery-status span { font-weight: 700; }
+
+@media (max-width: 680px) {
+  .detail-gallery { gap: 12px; }
+  .detail-gallery figure,
+  .detail-gallery-feature { width: 86vw; }
+  .detail-gallery-status { right: 18px; bottom: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-gallery figure,
+  .detail-gallery-feature { opacity: 1; transform: none; transition: none; }
+}
