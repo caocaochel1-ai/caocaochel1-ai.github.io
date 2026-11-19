@@ -32,9 +32,10 @@ const brandItems = [
 ]
 
 export const galleryPages = {
-  brand: { title: '品牌设计', en: 'Brand design', intro: '以清晰策略和独特视觉，建立能被记住的品牌语言。', items: brandItems },
-  packaging: { title: '包装设计', en: 'Packaging design', intro: '在结构、触感与货架之间，塑造品牌的第一印象。', items: makeItems(2) },
-  'key-visual': { title: '活动主视觉设计', en: 'Key visual design', intro: '为每一次发布、活动与叙事，建立鲜明的视觉场景。', items: makeItems(4) },
+  'ip-design': { title: 'IP Design', en: '角色与 IP 设计', intro: '角色设定、形象开发与 IP 视觉表达。', items: [] },
+  brand: { title: '品牌设计', en: 'Branding', intro: '以清晰策略和独特视觉，建立能被记住的品牌语言。', items: brandItems },
+  packaging: { title: '包装设计', en: 'Packaging', intro: '在结构、触感与货架之间，塑造品牌的第一印象。', items: makeItems(2) },
+  'key-visual': { title: '活动主视觉设计', en: 'Key Visual', intro: '为每一次发布、活动与叙事，建立鲜明的视觉场景。', items: makeItems(4) },
   operations: { title: '运营设计', en: 'Operations design', intro: '让日常内容在一致的系统中持续生长。', items: makeItems(1) },
   about: { title: '关于我', en: 'About Ray Studio', intro: '跨越品牌、产品与动态视觉的独立设计实践。', items: makeItems(3) },
   contact: { title: '联系方式', en: 'Contact', intro: '欢迎分享你的想法、品牌问题或下一次合作。', items: makeItems(0) },

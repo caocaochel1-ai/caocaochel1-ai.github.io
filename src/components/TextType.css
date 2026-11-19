@@ -1,0 +1,30 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  visibility: hidden;
+}
+
+/* Inherit the heading's wrapping and reserve its original text width. */
+.text-type--reserved {
+  display: inline;
+  white-space: inherit;
+}
+
+.text-type--reserved .text-type__cursor {
+  position: absolute;
+  margin-left: 0.08em;
+  pointer-events: none;
+}
+
+.text-type__remaining {
+  visibility: hidden;
+}

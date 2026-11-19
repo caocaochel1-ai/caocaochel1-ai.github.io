@@ -1,0 +1,9 @@
+/* Header styles shared by WorkCategoryPage and ProjectShowcase.
+   --work-u comes from the page wrapper (.work-page / .show-page). */
+.work-header{position:relative;height:calc(311 * var(--work-u))}
+.work-wordmark{position:absolute;left:calc(71 * var(--work-u));top:calc(52 * var(--work-u));display:block;width:calc(257 * var(--work-u));height:calc(54 * var(--work-u))}
+.work-wordmark img,.work-character img{display:block;width:100%;height:100%;object-fit:contain}
+.work-categories{position:absolute;left:calc(909 * var(--work-u));top:calc(57 * var(--work-u));display:flex;flex-direction:column;align-items:flex-start;font-size:calc(26 * var(--work-u));line-height:calc(28.5 * var(--work-u));letter-spacing:-.025em}
+.work-categories a{color:#aaa;white-space:nowrap;transition:color .15s ease}
+.work-categories a[aria-current="page"],.work-categories a:hover,.work-categories a:focus-visible{color:#111}
+.work-character{position:absolute;left:calc(1687 * var(--work-u));top:calc(50 * var(--work-u));display:block;width:calc(171 * var(--work-u));height:calc(161 * var(--work-u))}

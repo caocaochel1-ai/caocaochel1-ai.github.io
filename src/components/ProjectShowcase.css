@@ -1,0 +1,24 @@
+/* Reference canvas: 1920 x 1353 (sheet zuopin-03). Shares the header system
+   and the --work-u container unit with WorkCategoryPage. */
+.show-page{position:relative;width:100%;min-height:100vh;container-type:inline-size;--work-u:calc(100cqw / 1920);background:#ededed;color:#111;font-family:Manrope,Arial,sans-serif}
+.show-page a:focus-visible{outline:2px solid #777;outline-offset:4px}
+.show-main{display:grid;grid-template-columns:minmax(0,1fr) calc(940 * var(--work-u));column-gap:calc(110 * var(--work-u));padding:0 calc(73 * var(--work-u)) calc(160 * var(--work-u));align-items:start}
+
+/* Sticky intro: measured off sheet zuopin-03 (1920x1353) — "PROJECT 01" starts
+   at y≈635, text column width ≈543. Font sizes are the sheet's own px values. */
+.show-info{position:sticky;top:calc(120 * var(--work-u));align-self:start;margin-top:calc(324 * var(--work-u));max-width:calc(543 * var(--work-u))}
+.show-kicker{margin:0;font-size:calc(14 * var(--work-u));line-height:1.2;font-weight:600;letter-spacing:.01em}
+.show-title{margin:calc(2 * var(--work-u)) 0 0;font-size:calc(22 * var(--work-u));line-height:1.25;font-weight:500;letter-spacing:.02em}
+.show-rule{border:0;border-top:1px solid #999;margin:calc(24 * var(--work-u)) 0 calc(21 * var(--work-u))}
+.show-tagline{margin:0 0 calc(18 * var(--work-u));font-size:calc(12.5 * var(--work-u));line-height:calc(20.5 * var(--work-u));letter-spacing:.01em}
+.show-paragraph{margin:0 0 calc(18 * var(--work-u));font-size:calc(12.5 * var(--work-u));line-height:calc(20.5 * var(--work-u));letter-spacing:.01em;color:#222}
+
+/* Scrolling gallery: per sheet zuopin.jpg the images are full-bleed — no card
+   frame, no radius, no shadow — stacked with slim gaps, natural aspect ratio.
+   Opacity + parallax are driven from ProjectShowcase.jsx (scroll-linked rAF). */
+.show-gallery{display:flex;flex-direction:column;gap:calc(8 * var(--work-u))}
+/* No will-change / transform hints here: they promote each image to its own
+   compositing layer, which Chrome then rasterizes at 1x and rescales — that
+   made the artwork look soft on zoomed or high-DPI screens. */
+.show-card{margin:0}
+.show-card img{display:block;width:100%;height:auto}

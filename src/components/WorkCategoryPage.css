@@ -1,0 +1,56 @@
+/* Reference canvas: 1920. Every visible element shares one scale.
+   Page header styles live in WorkHeader.css. Layout is measured off
+   zuopin-02; hover choreography follows goodside.studio (accordion focus
+   + reveal caption). */
+.work-page{position:relative;width:100%;min-height:100vh;container-type:inline-size;--work-u:calc(100cqw / 1920);--ease:cubic-bezier(.22,1,.36,1);background:#ededed;color:#111;font-family:Manrope,Arial,sans-serif}
+.work-main{padding:0 calc(58 * var(--work-u)) calc(160 * var(--work-u))}
+
+/* "My Works®" shares the top band with the wordmark and the character. */
+.work-hero-title{position:absolute;left:0;right:0;top:calc(48 * var(--work-u));margin:0;text-align:center;font-size:calc(56 * var(--work-u));line-height:1.1;font-weight:500;letter-spacing:-.035em;z-index:1;pointer-events:none}
+.work-hero-reg{font-size:.26em;font-weight:400;vertical-align:super;margin-left:.08em;letter-spacing:0}
+.work-divider{border:0;border-top:calc(1.4 * var(--work-u)) solid #c6c6c6;margin:0}
+
+/* Every discipline is introduced by a full-width hairline + "/ Label /". */
+.work-group{margin-top:0}
+.work-group + .work-group{margin-top:calc(127 * var(--work-u));border-top:calc(1.4 * var(--work-u)) solid #c6c6c6}
+.work-group-title{margin:calc(60 * var(--work-u)) 0 calc(36 * var(--work-u));text-align:center;font-size:calc(40 * var(--work-u));line-height:1.2;font-weight:500;letter-spacing:-.01em}
+
+/* Three-column grid, measured off the sheet: 58 / 576 / 40 / 324. */
+.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:calc(40 * var(--work-u));row-gap:calc(117 * var(--work-u))}
+.work-card{display:block;min-width:0;position:relative;transition:transform .6s var(--ease),opacity .6s var(--ease)}
+.work-card-art{position:relative;height:calc(324 * var(--work-u));background:#fff;border-radius:calc(14 * var(--work-u));overflow:hidden}
+.work-card-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .6s var(--ease)}
+
+/* Reveal caption + veil, held back until hover (Goodside "hover captions"). */
+.work-card-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.44) 0%,rgba(17,17,17,.06) 46%,rgba(17,17,17,.20) 100%);opacity:0;transition:opacity .55s var(--ease);pointer-events:none}
+.work-card-hovercap{position:absolute;left:calc(28 * var(--work-u));right:calc(28 * var(--work-u));top:calc(26 * var(--work-u));display:flex;flex-direction:column;gap:calc(9 * var(--work-u));color:#fff;opacity:0;transform:translateY(calc(-14 * var(--work-u)));transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none;text-shadow:0 calc(1 * var(--work-u)) calc(10 * var(--work-u)) rgba(0,0,0,.35)}
+.work-card-hovercap-kicker{font-size:calc(14 * var(--work-u));line-height:1.2;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.work-card-hovercap-title{font-size:calc(38 * var(--work-u));line-height:1.1;font-weight:500;letter-spacing:-.02em}
+
+/* Placeholder tiles stay light, so their reveal type stays dark. */
+.work-card.is-placeholder .work-card-veil{background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,0) 62%)}
+.work-card.is-placeholder .work-card-hovercap{color:#111;text-shadow:none}
+
+.work-card-caption{display:flex;align-items:center;justify-content:space-between;margin-top:calc(15 * var(--work-u));font-size:calc(15 * var(--work-u));line-height:calc(22 * var(--work-u));font-weight:500;letter-spacing:-.02em}
+.work-card-caption span:first-child{color:#a3a3a3;font-weight:400}
+.work-card-caption span:last-child{color:#111}
+.work-page a:focus-visible{outline:2px solid #777;outline-offset:4px}
+
+/* Accordion hover: the focused tile grows, its neighbours recede. */
+@media (hover:hover) and (pointer:fine){
+  .work-grid:hover .work-card{opacity:.62;transform:scale(.975)}
+  .work-grid .work-card:hover{opacity:1;transform:scale(1.035) translateY(calc(-8 * var(--work-u)));z-index:3}
+  .work-card:hover .work-card-cover{transform:scale(1.1) translate(calc(var(--px,0) * -14px),calc(var(--py,0) * -14px))}
+  .work-card:hover .work-card-veil{opacity:1}
+  .work-card:hover .work-card-hovercap{opacity:1;transform:translateY(0)}
+}
+
+/* Stack to two / one columns on narrow screens. */
+@container (max-width: 1100px){.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (max-width: 640px){.work-grid{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion:reduce){
+  .work-card,.work-card-cover,.work-card-veil,.work-card-hovercap{transition-duration:.01ms}
+  .work-grid:hover .work-card,.work-grid .work-card:hover{transform:none}
+  .work-card:hover .work-card-cover{transform:none}
+}

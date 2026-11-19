@@ -1,5 +1,15 @@
-import { socialLinks } from '../data/socialLinks'
-
 export default function ContactFooter() {
- return <footer id="contact" className="contact"><div className="contact-orb orb-a" /><div className="contact-orb orb-b" /><div className="contact-inner"><p className="section-kicker">(04) / CONTACT</p><h2>Let's make<br />something <em>meaningful.</em></h2><a className="contact-email" href="mailto:hello@yuanli.design">hello@yuanli.design <span>↗</span></a><div className="contact-bottom"><div className="socials">{socialLinks.map(([name, url]) => <a key={name} href={url} target={url.startsWith('http') ? '_blank' : undefined} rel="noreferrer">{name} ↗</a>)}</div><p>SHANGHAI, CHINA<br />AVAILABLE WORLDWIDE</p><a href="#top" className="back-top">BACK TO TOP ↑</a></div></div></footer>
+  return <footer id="contact" className="home-contact">
+    <div className="studio-ribbon" aria-label="Rainee Studio">
+      {Array.from({ length: 4 }, (_, index) => <img key={index} src="/assets/reference-home/studio-logo.png" alt="" aria-hidden="true" />)}
+    </div>
+    <div className="home-contact-main">
+      <div className="home-contact-copy">
+        <h2>CONTACT ME</h2>
+        <a className="home-contact-email" href="mailto:727395794@qq.com">727395794@qq.com<svg className="home-arrow" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M4 36 36 4M4 4h32v32" stroke="currentColor" strokeWidth="1.2" /></svg></a>
+      </div>
+      <img className="home-contact-art" src="/assets/reference-home/contact-bouquet.webp" alt="Flowers, a fountain pen and two birds emerging from an envelope" loading="lazy" />
+    </div>
+    <div className="home-contact-bottom"><a href="mailto:727395794@qq.com">Email</a><span>WeChat</span><span>Zhanku</span><span>Rednote</span></div>
+  </footer>
 }

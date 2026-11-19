@@ -1,10 +1,23 @@
+import { Link } from 'react-router-dom'
+
 const capabilities = [
-  ['01', 'Brand &\nVisual Identity', 'Systems with a distinct point of view.', 'Strategy · Identity · Art direction'],
-  ['02', 'Product /\nUI Design', 'Useful interfaces with a human pulse.', 'UX · UI · Prototyping'],
-  ['03', 'AI Creative\nDirection', 'New visual languages for new tools.', 'Gen AI · Concepts · Campaigns'],
-  ['04', 'Motion &\nInteraction', 'Rhythm, feedback and tiny moments.', 'Motion · WebGL · Interaction'],
+  ['Brand & Visual Identity', '/work'],
+  ['Packaging Design', '/work'],
+  ['Key vision design', '/work'],
+  ['AI design', '/work'],
 ]
 
 export default function Capabilities() {
- return <section id="capabilities" className="capabilities section-wrap"><div className="section-kicker">(03) / CAPABILITIES</div><div className="capability-grid">{capabilities.map(([n, title, copy, tags]) => <article className="capability" key={n}><span>{n}</span><h3>{title.split('\n').map((line, i) => <>{line}{i === 0 && <br />}</>)}</h3><div><p>{copy}</p><small>{tags}</small></div><b>↗</b></article>)}</div></section>
+  return <section id="capabilities" className="home-capabilities" aria-labelledby="capabilities-heading">
+    <h2 id="capabilities-heading" className="home-section-heading">03/ CAPABILITIES</h2>
+    <div className="home-capability-grid">
+      {capabilities.map(([title, href], index) => <Link className="home-capability" key={title} to={href}>
+        <div className="home-capability-art" aria-hidden="true">
+          <img src="/assets/reference-home/capability-grain.webp" alt="" loading="lazy" />
+          {Array.from({ length: 8 }, (_, i) => <i key={i} />)}
+        </div>
+        <h3>{title}</h3><span className="home-capability-number">{index + 1}</span>
+      </Link>)}
+    </div>
+  </section>
 }
